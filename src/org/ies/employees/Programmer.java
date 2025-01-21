@@ -15,7 +15,7 @@ public class Programmer extends Employee {
 
     @Override
     public void showInfo() {
-        System.out.println("NIF: " + nif + " Nombre: " + name + " Apellidos: " + surname + " Horas trabajadas: " + hoursWorked + " Lenguages de programación: " + programmingLanguage + " Proyecto: " + project);
+        System.out.println("NIF: " + nif + " Nombre: " + name + " Apellidos: " + surname + " Horas trabajadas: " + hoursWorked + " Lenguages de programación: " + programmingLanguages + " Proyecto: " + project);
     }
 
     public boolean knowsLanguage(String languages) {
