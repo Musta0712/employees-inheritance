@@ -2,7 +2,7 @@ package org.ies.employees;
 
 import java.util.Objects;
 
-public class Employee {
+public abstract class Employee {
     protected String nif;
     protected String name;
     protected String surname;
@@ -13,6 +13,13 @@ public class Employee {
         this.name = name;
         this.surname = surname;
         this.hoursWorked = hoursWorked;
+    }
+
+    public abstract void showInfo();
+
+    public void allocateHours(int hours){
+        hoursWorked += hours;
+        System.out.println("Trabajados " + hours + " más");
     }
 
     public String getNif() {

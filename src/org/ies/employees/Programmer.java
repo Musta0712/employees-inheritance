@@ -1,71 +1,38 @@
 package org.ies.employees;
 
+import java.util.Arrays;
 import java.util.Objects;
 
 public class Programmer extends Employee {
-    private String nif;
-    private String name;
-    private String surname;
-    private int hoursWorked;
-    private String programmingLanguage;
+    private String[] programmingLanguages;
     private String project;
 
-    public Programmer(String nif, String name, String surname, int hoursWorked, String nif1, String name1, String surname1, int hoursWorked1, String programmingLanguage, String project) {
+    public Programmer(String nif, String name, String surname, int hoursWorked, String[] programmingLanguages, String project) {
         super(nif, name, surname, hoursWorked);
-        this.nif = nif1;
-        this.name = name1;
-        this.surname = surname1;
-        this.hoursWorked = hoursWorked1;
-        this.programmingLanguage = programmingLanguage;
+        this.programmingLanguages = programmingLanguages;
         this.project = project;
     }
 
     @Override
-    public String getNif() {
-        return nif;
+    public void showInfo() {
+        System.out.println("NIF: " + nif + " Nombre: " + name + " Apellidos: " + surname + " Horas trabajadas: " + hoursWorked + " Lenguages de programación: " + programmingLanguage + " Proyecto: " + project);
     }
 
-    @Override
-    public void setNif(String nif) {
-        this.nif = nif;
+    public boolean knowsLanguage(String languages) {
+        for (var programmingLanguages : programmingLanguages){
+            if (programmingLanguages.equals(languages)){
+                return true;
+            }
+        }
+        return false;
     }
 
-    @Override
-    public String getName() {
-        return name;
+    public String[] getProgrammingLanguages() {
+        return programmingLanguages;
     }
 
-    @Override
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    @Override
-    public String getSurname() {
-        return surname;
-    }
-
-    @Override
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    @Override
-    public int getHoursWorked() {
-        return hoursWorked;
-    }
-
-    @Override
-    public void setHoursWorked(int hoursWorked) {
-        this.hoursWorked = hoursWorked;
-    }
-
-    public String getProgrammingLanguage() {
-        return programmingLanguage;
-    }
-
-    public void setProgrammingLanguage(String programmingLanguage) {
-        this.programmingLanguage = programmingLanguage;
+    public void setProgrammingLanguages(String[] programmingLanguages) {
+        this.programmingLanguages = programmingLanguages;
     }
 
     public String getProject() {
@@ -82,24 +49,20 @@ public class Programmer extends Employee {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         Programmer that = (Programmer) o;
-        return hoursWorked == that.hoursWorked && Objects.equals(nif, that.nif) && Objects.equals(name, that.name) && Objects.equals(surname, that.surname) && Objects.equals(programmingLanguage, that.programmingLanguage) && Objects.equals(project, that.project);
+        return Objects.deepEquals(programmingLanguages, that.programmingLanguages) && Objects.equals(project, that.project);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), nif, name, surname, hoursWorked, programmingLanguage, project);
+        return Objects.hash(super.hashCode(), Arrays.hashCode(programmingLanguages), project);
     }
 
     @Override
     public String toString() {
         return "Programmer{" +
-                "project='" + project + '\'' +
+                "programmingLanguages=" + Arrays.toString(programmingLanguages) +
+                ", project='" + project + '\'' +
                 ", nif='" + nif + '\'' +
-                ", nif='" + nif + '\'' +
-                ", name='" + name + '\'' +
-                ", hoursWorked=" + hoursWorked +
-                ", surname='" + surname + '\'' +
-                ", programmingLanguage='" + programmingLanguage + '\'' +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", hoursWorked=" + hoursWorked +
